@@ -44,6 +44,7 @@
     <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,10 +57,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constantes\Constantes.cs" />
     <Compile Include="DAO\ConexaoBD.cs" />
     <Compile Include="DAO\FuncionarioDAO.cs" />
+    <Compile Include="DAO\GenericDAO.cs" />
     <Compile Include="DAO\HelperDAO.cs" />
+    <Compile Include="DAO\NivelCargoDAO.cs" />
+    <Compile Include="DAO\SetorDAO.cs" />
     <Compile Include="Entidades\Funcionario.cs" />
+    <Compile Include="Entidades\GenericClass.cs" />
     <Compile Include="Entidades\NivelCargo.cs" />
     <Compile Include="Entidades\PerfilUsuario.cs" />
     <Compile Include="Entidades\Setor.cs" />
@@ -92,6 +98,13 @@
     <Compile Include="frFuncionarioFormulario.Designer.cs">
       <DependentUpon>frFuncionarioFormulario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Servicos\UtilService.cs" />
+    <Compile Include="frUsuarioFormulario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frUsuarioFormulario.Designer.cs">
+      <DependentUpon>frUsuarioFormulario.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frLogin.resx">
       <DependentUpon>frLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frFuncionarioFormulario.resx">
       <DependentUpon>frFuncionarioFormulario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frUsuarioFormulario.resx">
+      <DependentUpon>frUsuarioFormulario.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

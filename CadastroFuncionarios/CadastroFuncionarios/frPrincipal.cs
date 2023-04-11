@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using CadastroFuncionarios.Enums;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,14 @@ namespace CadastroFuncionarios
             using (frFuncionarios frFuncionarios = new frFuncionarios())
             {
                 frFuncionarios.ShowDialog(this);
+            }
+        }
+
+        private void btnCrudUsuarios_Click(object sender, EventArgs e)
+        {
+            using (frUsuarioFormulario frUsuario = new frUsuarioFormulario(EnumTipoCrud.Inserir))
+            {
+                frUsuario.ShowDialog(this);
             }
 
         }

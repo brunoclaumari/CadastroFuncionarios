@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CadastroFuncionarios.Entidades
 {
-    public class Funcionario
+    public class Funcionario : GenericClass
     {
         /*
          	FUN_ID INT IDENTITY (1,1) NOT NULL,
@@ -20,15 +20,17 @@ namespace CadastroFuncionarios.Entidades
 	        USU_ID INT NULL
          */
         public long Id { get; set; }
-
         public string Nome { get; set; }
         public string Cargo { get; set; }
         public DateTime DataAdmissao { get; set; }
         public string Cpf { get; set; }
         public Double Salario { get; set; }
         public long NivelId { get; set; }
+        //Esse dado não será persistido
+        public string NivelDescricao { get; set; }
         public long SetorId { get; set; }
-        public long UsuarioId { get; set; }
+        //Esse dado não será persistido
+        public string SetorDescricao { get; set; }
 
         public override string ToString()
         {

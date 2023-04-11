@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CadastroFuncionarios.DAO
 {
-    public class FuncionarioDAO
-    {
+    public class FuncionarioDAO : GenericDAO<Funcionario>
+    {        
 
-        public string Tabela = "tbFuncionario";
+        protected override void SetParametrosDaTabela()
+        {
+            Tabela = "tbFuncionario";
+            ProcedureInsert = "spInsertFuncionario";
+            ProcedureUpdate = "spUpdateFuncionario";
+        }
 
         public struct CAMPOS
         {
@@ -27,57 +30,69 @@ namespace CadastroFuncionarios.DAO
             public static string USU_ID = "USU_ID";
         }
 
-        /*
-
-         FUN_ID INT 
-         FUN_NOME 
-         FUN_CARGO
-         FUN_DATA_ADMISSAO 
-         FUN_CPF 
-         FUN_SALARIO 
-         NIC_ID 
-         STR_ID 
-         USU_ID 
-         */
-
-        public FuncionarioDAO()
+        public int SalvaInsert(Funcionario entidade)
         {
+            int retorno = -100;
+
+            retorno = HelperDAO.ExecutaProcedure(ProcedureInsert, CriaParametros(entidade));
+
+            return retorno;
         }
 
-        public List<Funcionario> ListaRegistros()
+        public int SalvaEdicao(Funcionario entidade)
         {
-            List<Funcionario> listaFuncionarios = new List<Funcionario>();
-            string sql = $"select * from {Tabela}";
-            DataTable dados = HelperDAO.ExecutaSelect(sql, null);
-            for (int i = 0; i < dados.Rows.Count; i++)
-            {
-                listaFuncionarios.Add(MontaEntidade(dados.Rows[i]));
-            }
+            int retorno = -100;
 
-            return listaFuncionarios;
+            retorno = HelperDAO.ExecutaProcedure(ProcedureUpdate, CriaParametros(entidade));
+
+            return retorno;
         }
 
-        public SqlParameter[] CriaParametros(Funcionario model)
+        protected override SqlParameter[] CriaParametros(Funcionario entidade)
         {
             SqlParameter[] parametros =
             {
-                 new SqlParameter(CAMPOS.FUN_ID,model.Id),
-                 new SqlParameter(CAMPOS.FUN_NOME,model.Nome),
-                 new SqlParameter(CAMPOS.FUN_CARGO,model.Cargo),
-                 new SqlParameter(CAMPOS.FUN_DATA_ADMISSAO,model.DataAdmissao),
-                 new SqlParameter(CAMPOS.FUN_CPF,model.Cpf),
-                 new SqlParameter(CAMPOS.FUN_SALARIO,model.Salario),
-                 new SqlParameter(CAMPOS.NIC_ID,model.NivelId),
-                 new SqlParameter(CAMPOS.STR_ID,model.SetorId),
-                 new SqlParameter(CAMPOS.USU_ID,model.UsuarioId)
+                 new SqlParameter(CAMPOS.FUN_ID,entidade.Id),
+                 new SqlParameter(CAMPOS.FUN_NOME,entidade.Nome),
+                 new SqlParameter(CAMPOS.FUN_CARGO,entidade.Cargo),
+                 new SqlParameter(CAMPOS.FUN_DATA_ADMISSAO,entidade.DataAdmissao),
+                 new SqlParameter(CAMPOS.FUN_CPF,entidade.Cpf),
+                 new SqlParameter(CAMPOS.FUN_SALARIO,entidade.Salario),
+                 new SqlParameter(CAMPOS.NIC_ID,entidade.NivelId),
+                 new SqlParameter(CAMPOS.STR_ID,entidade.SetorId)
+                 
             };
 
             return parametros;
         }
 
+        public List<Funcionario> ListaRegistrosComDescricoes()
+        {
+            List<Funcionario> lista = ListaRegistros();
+            foreach (var funcionario in lista)
+            {
+                funcionario.NivelDescricao = ObtemNivelDescricao(funcionario.NivelId);
+                funcionario.SetorDescricao = ObtemSetorDescricao(funcionario.SetorId);
+            }
 
+            return lista;
+        }
 
-        public Funcionario MontaEntidade(DataRow linhaDeDados)
+        private string ObtemSetorDescricao(long setorId)
+        {
+            SetorDAO setorDAO = new SetorDAO();
+
+            return setorDAO.ListaRegistros().FirstOrDefault(x => x.Id == setorId).Descricao;
+        }
+
+        private string ObtemNivelDescricao(long nivelId)
+        {
+            NivelCargoDAO nivelDAO = new NivelCargoDAO();
+
+            return nivelDAO.ListaRegistros().FirstOrDefault(x => x.Id == nivelId).Descricao;
+        }
+
+        protected override Funcionario MontaEntidade(DataRow linhaDeDados)
         {
             Funcionario funcionario = new Funcionario
             {
@@ -88,19 +103,23 @@ namespace CadastroFuncionarios.DAO
                 Salario = Convert.ToDouble(linhaDeDados[CAMPOS.FUN_SALARIO]),
                 DataAdmissao = Convert.ToDateTime(linhaDeDados[CAMPOS.FUN_DATA_ADMISSAO]),
                 NivelId = Convert.ToInt32(linhaDeDados[CAMPOS.NIC_ID]),
-                SetorId = Convert.ToInt32(linhaDeDados[CAMPOS.STR_ID]),
-                UsuarioId = linhaDeDados[CAMPOS.STR_ID] == null ? 0 : Convert.ToInt32(linhaDeDados[CAMPOS.USU_ID])
-
+                SetorId = Convert.ToInt32(linhaDeDados[CAMPOS.STR_ID])
             };
-            //string sql = $"select * from {Tabela}";
-            //DataTable dados = HelperDAO.ExecutaSelect(sql, null);
-            //for (int i = 0; i < dados.Rows.Count; i++)
-            //{
-
-            //}
-
 
             return funcionario;
+        }
+
+        public int ApagarDados(long id)
+        {   
+            SqlParameter[] parametros =
+            {
+                new SqlParameter("@ID_VALOR",id),
+                new SqlParameter("@ID_PARAMETRO",CAMPOS.FUN_ID),
+                new SqlParameter("@TABELA",Tabela)
+            };
+            int retorno = HelperDAO.ExecutaProcedure(ProcedureDelete, parametros);
+
+            return retorno;
         }
     }
 }

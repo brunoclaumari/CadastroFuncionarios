@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CadastroFuncionarios.Entidades
 {
-    public class PerfilUsuario
+    public class PerfilUsuario : GenericClass
     {
         public long Id { get; set; }
 
