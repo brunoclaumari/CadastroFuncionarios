@@ -37,8 +37,10 @@ namespace CadastroFuncionarios
             var listaFuncionariosAutorizados = funcionarioDAO.ListaRegistrosComDescricoes();
             if(listaFuncionariosAutorizados != null)
             {
+                //Depois tem que filtrar os Funcionarios que não tem Usuario cadastrado.
                 cbFuncionariosAutorizados.DataSource = listaFuncionariosAutorizados
                     .Where(x => x.SetorDescricao == Constantes.Constantes.GERENCIA).ToList();
+
             }
         }
 
