@@ -64,7 +64,9 @@
     <Compile Include="DAO\GenericDAO.cs" />
     <Compile Include="DAO\HelperDAO.cs" />
     <Compile Include="DAO\NivelCargoDAO.cs" />
+    <Compile Include="DAO\PerfilUsuarioDAO.cs" />
     <Compile Include="DAO\SetorDAO.cs" />
+    <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Entidades\Funcionario.cs" />
     <Compile Include="Entidades\GenericClass.cs" />
     <Compile Include="Entidades\NivelCargo.cs" />

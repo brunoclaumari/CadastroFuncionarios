@@ -23,7 +23,9 @@ namespace CadastroFuncionarios.Constantes
         //Itens da entidade "Funcionario"
         public const string Id = "Id";
         public const string Nome = "Nome";
-        /*
-         */
+
+        //Itens da entidade "Usuario"
+        public const string Descricao = "Descricao";
+
     }
 }

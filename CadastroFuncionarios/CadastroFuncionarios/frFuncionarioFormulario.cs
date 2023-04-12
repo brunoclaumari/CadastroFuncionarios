@@ -6,13 +6,12 @@ using DevExpress.Utils.Controls;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace CadastroFuncionarios
 {
-    public partial class frFuncionarioFormulario : DevExpress.XtraEditors.XtraForm
+    public partial class frFuncionarioFormulario : XtraForm
     {
         private readonly EnumTipoCrud _tipoCrud;
 
@@ -99,7 +98,8 @@ namespace CadastroFuncionarios
             if (retorno > 0)
             {
                 MessageBox.Show(this, mensagem, "Deu certo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimparControles();
+                UtilService.LimparControles(this);
+                //LimparControles();
             }
         }
 
@@ -166,6 +166,7 @@ namespace CadastroFuncionarios
 
         void LimparControles()
         {
+            //XtraForm
             foreach (Control ctrl in this.Controls)
             {
                 if (ctrl is BaseEdit)
@@ -237,7 +238,7 @@ namespace CadastroFuncionarios
 
         private void frFuncionarioFormulario_FormClosing(object sender, FormClosingEventArgs e)
         {
-            LimparControles();
+            UtilService.LimparControles(this);
         }
 
         private void btnSair_Click(object sender, EventArgs e)

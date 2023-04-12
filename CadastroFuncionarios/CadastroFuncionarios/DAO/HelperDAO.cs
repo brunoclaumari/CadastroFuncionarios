@@ -10,9 +10,7 @@ namespace CadastroFuncionarios.DAO
         {
             SqlConnection conexao;
             using (conexao = ConexaoBD.GetConexao())
-            {
-                //conexao = ConexaoBD.GetConexao();
-                //conexao.Open();
+            {                
                 using (SqlDataAdapter adapter = new SqlDataAdapter(sql, conexao))
                 {
                     if (parametros != null)

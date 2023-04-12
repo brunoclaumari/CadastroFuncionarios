@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CadastroFuncionarios.Servicos
 {
@@ -49,6 +51,24 @@ namespace CadastroFuncionarios.Servicos
 				resto = 11 - resto;
 			digito = digito + resto.ToString();
 			return cpf.EndsWith(digito);
+		}
+
+		public static void LimparControles(XtraForm form)
+		{			
+			foreach (Control ctrl in form.Controls)
+			{
+				if (ctrl is BaseEdit)
+					(ctrl as BaseEdit).EditValue = null;
+			}
+		}
+
+		public static void LimparErrosDosControles(XtraForm form, ref ErrorProvider errorProvider)
+		{
+			foreach (Control ctrl in form.Controls)
+			{
+				if (ctrl is BaseEdit)
+					errorProvider.SetError(ctrl,string.Empty);
+			}
 		}
 	}
 }

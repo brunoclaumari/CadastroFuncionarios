@@ -6,8 +6,6 @@ namespace CadastroFuncionarios.DAO
     {
         private static SqlConnection _conexao;
 
-
-
         public static SqlConnection GetConexao()
         {
             string strCon = "Data Source=localhost;Initial Catalog=dbCadastroFuncionarios;user id=sa; password=123456";

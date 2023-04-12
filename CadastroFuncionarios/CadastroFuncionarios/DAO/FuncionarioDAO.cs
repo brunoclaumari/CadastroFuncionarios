@@ -121,5 +121,28 @@ namespace CadastroFuncionarios.DAO
 
             return retorno;
         }
+
+        public List<Funcionario> ListaFuncionariosAutorizadosSemLogin()
+        {   
+            SqlParameter[] parametros =
+            {
+                new SqlParameter("@SETOR_GERENCIA",1),
+                new SqlParameter("@SETOR_FINANCEIRO",2),
+                
+            };
+            //STR_ID = 1 é de setor de Gerencia e STR_ID = 2 é do Financeiro. Apenas esses podem ter usuário cadastrado no sistema
+            string comandoSql = $"SELECT tbFuncionario.* FROM tbFuncionario LEFT JOIN tbUsuario ON tbUsuario.FUN_ID = tbFuncionario.FUN_ID " +
+                $"WHERE tbFuncionario.STR_ID IN (@SETOR_GERENCIA , @SETOR_FINANCEIRO) AND tbUsuario.FUN_ID IS NULL";
+            
+            DataTable tabela = HelperDAO.ExecutaSelect(comandoSql, parametros);
+
+            List<Funcionario> lista = new List<Funcionario>();
+            foreach (DataRow registro in tabela.Rows)
+            {
+                lista.Add(MontaEntidade(registro));
+            }
+
+            return lista;
+        }
     }
 }

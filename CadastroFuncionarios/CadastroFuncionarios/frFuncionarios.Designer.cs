@@ -97,7 +97,7 @@ namespace CadastroFuncionarios
             gridLevelNode1.RelationName = "Level1";
             this.gridControlFuncionarios.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gridControlFuncionarios.Location = new System.Drawing.Point(3, 92);
+            this.gridControlFuncionarios.Location = new System.Drawing.Point(3, 117);
             this.gridControlFuncionarios.MainView = this.gridViewFuncionario;
             this.gridControlFuncionarios.Name = "gridControlFuncionarios";
             this.gridControlFuncionarios.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -105,7 +105,7 @@ namespace CadastroFuncionarios
             this.repositoryItemButtonDelete,
             this.repositoryItemImageEdit1,
             this.repositoryItemButtonEdit1});
-            this.gridControlFuncionarios.Size = new System.Drawing.Size(988, 409);
+            this.gridControlFuncionarios.Size = new System.Drawing.Size(1168, 524);
             this.gridControlFuncionarios.TabIndex = 1;
             this.gridControlFuncionarios.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewFuncionario});
@@ -152,6 +152,7 @@ namespace CadastroFuncionarios
             this.colNome.Caption = "Nome";
             this.colNome.FieldName = "Nome";
             this.colNome.Name = "colNome";
+            this.colNome.OptionsColumn.AllowEdit = false;
             this.colNome.Visible = true;
             this.colNome.VisibleIndex = 0;
             this.colNome.Width = 165;
@@ -161,6 +162,7 @@ namespace CadastroFuncionarios
             this.colCpf.Caption = "CPF";
             this.colCpf.FieldName = "Cpf";
             this.colCpf.Name = "colCpf";
+            this.colCpf.OptionsColumn.AllowEdit = false;
             this.colCpf.Visible = true;
             this.colCpf.VisibleIndex = 1;
             this.colCpf.Width = 101;
@@ -170,6 +172,7 @@ namespace CadastroFuncionarios
             this.colCargo.Caption = "Cargo";
             this.colCargo.FieldName = "Cargo";
             this.colCargo.Name = "colCargo";
+            this.colCargo.OptionsColumn.AllowEdit = false;
             this.colCargo.Visible = true;
             this.colCargo.VisibleIndex = 2;
             this.colCargo.Width = 99;
@@ -179,6 +182,7 @@ namespace CadastroFuncionarios
             this.colSalario.Caption = "Salário";
             this.colSalario.FieldName = "Salario";
             this.colSalario.Name = "colSalario";
+            this.colSalario.OptionsColumn.AllowEdit = false;
             this.colSalario.Visible = true;
             this.colSalario.VisibleIndex = 3;
             this.colSalario.Width = 94;
@@ -188,6 +192,7 @@ namespace CadastroFuncionarios
             this.colDataAdmissao.Caption = "Data de admissão";
             this.colDataAdmissao.FieldName = "DataAdmissao";
             this.colDataAdmissao.Name = "colDataAdmissao";
+            this.colDataAdmissao.OptionsColumn.AllowEdit = false;
             this.colDataAdmissao.Visible = true;
             this.colDataAdmissao.VisibleIndex = 6;
             this.colDataAdmissao.Width = 117;
@@ -197,6 +202,7 @@ namespace CadastroFuncionarios
             this.colSetorDescricao.Caption = "Setor";
             this.colSetorDescricao.FieldName = "SetorDescricao";
             this.colSetorDescricao.Name = "colSetorDescricao";
+            this.colSetorDescricao.OptionsColumn.AllowEdit = false;
             this.colSetorDescricao.Visible = true;
             this.colSetorDescricao.VisibleIndex = 5;
             this.colSetorDescricao.Width = 102;
@@ -206,6 +212,7 @@ namespace CadastroFuncionarios
             this.colNivelDescricao.Caption = "Nível";
             this.colNivelDescricao.FieldName = "NivelDescricao";
             this.colNivelDescricao.Name = "colNivelDescricao";
+            this.colNivelDescricao.OptionsColumn.AllowEdit = false;
             this.colNivelDescricao.Visible = true;
             this.colNivelDescricao.VisibleIndex = 4;
             this.colNivelDescricao.Width = 105;
@@ -288,16 +295,16 @@ namespace CadastroFuncionarios
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.84232F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.15768F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(994, 504);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1174, 644);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // frFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 528);
+            this.ClientSize = new System.Drawing.Size(1198, 668);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(1020, 560);
+            this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "frFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Funcionários";
