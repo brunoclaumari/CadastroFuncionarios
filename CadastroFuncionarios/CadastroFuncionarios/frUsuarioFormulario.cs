@@ -125,8 +125,8 @@ namespace CadastroFuncionarios
                 string mensagem = $"Usuário \"{usuarioForm.Login}\" inserido com sucesso!!";
 
                 if (retorno > 0)
-                {
-                    XtraMessageBox.Show(this, mensagem, "Deu certo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                {                    
+                    UtilService.MostraMensagemInformacao("Deu certo!", mensagem);
                     UtilService.LimparControles(this);
                     CarregaDadosIniciaisDoForm();
                 }
@@ -134,7 +134,8 @@ namespace CadastroFuncionarios
             }
             catch (Exception e)
             {
-                XtraMessageBox.Show(this, "Ocorreu um erro ao tentar inserir o Usuário", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //XtraMessageBox.Show(this, "Ocorreu um erro ao tentar inserir o Usuário", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                UtilService.MostraMensagemErro("Erro!", "Ocorreu um erro ao tentar inserir o Usuário");
             }
         }
 

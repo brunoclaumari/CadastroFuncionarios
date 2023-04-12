@@ -65,6 +65,7 @@ namespace CadastroFuncionarios
             this.btnLogarNoSIstema.Size = new System.Drawing.Size(196, 62);
             this.btnLogarNoSIstema.TabIndex = 27;
             this.btnLogarNoSIstema.Text = "Entrar";
+            this.btnLogarNoSIstema.Click += new System.EventHandler(this.btnLogarNoSIstema_Click);
             // 
             // lblSenha
             // 

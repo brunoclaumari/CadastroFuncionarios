@@ -70,5 +70,25 @@ namespace CadastroFuncionarios.Servicos
 					errorProvider.SetError(ctrl,string.Empty);
 			}
 		}
+
+		public static void MostraMensagemErro(string titulo, string mensagem)
+        {
+			MessageBox.Show(mensagem, titulo, MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
+
+		public static void MostraMensagemInformacao(string titulo, string mensagem)
+		{
+			MessageBox.Show(mensagem, titulo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		public static void MostraMensagemAlerta(string titulo, string mensagem)
+		{
+			MessageBox.Show(mensagem, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+		}
+
+		public static void MostraMensagemAlertaSimNao(string titulo, string mensagem)
+		{
+			MessageBox.Show(mensagem, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+		}
 	}
 }

@@ -63,5 +63,17 @@ namespace CadastroFuncionarios.DAO
 
             return retorno;
         }
+
+        public int TestaUsuarioSenha(string login, string senha)
+        {            
+            var parametros = new SqlParameter[]
+            {
+                new SqlParameter(CAMPOS.USU_LOGIN,login),
+                new SqlParameter(CAMPOS.USU_SENHA,senha)
+            };
+            var testeLogin = HelperDAO.ExecutaProcedureSelect("spValidaUsuario", parametros);
+            
+            return Convert.ToInt32(testeLogin.Rows[0][0]);
+        }
     }
 }

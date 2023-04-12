@@ -7,13 +7,7 @@ using System.Threading.Tasks;
 namespace CadastroFuncionarios.Constantes
 {
     public static class Constantes
-    {
-        /*
-         Gerência
-        Financeiro
-        Tecnologia
-        Marketing
-         */
+    {        
         //Itens da entidade "Setor"
         public const string GERENCIA = "Gerência";
         public const string FINANCEIRO = "Financeiro";
@@ -26,6 +20,15 @@ namespace CadastroFuncionarios.Constantes
 
         //Itens da entidade "Usuario"
         public const string Descricao = "Descricao";
+
+        public const int USUARIO_INVALIDO = -1;
+        public const int SENHA_INVALIDA = 0;
+        public const int USUARIO_SENHA_VALIDOS = 1;
+        /*
+            -se for igual a -1 usuario não cadastrado
+            -se for igual a  0 senha invalida
+            -se for igual a  1 vai logar
+            */
 
     }
 }

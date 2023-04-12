@@ -1,6 +1,7 @@
 ﻿using CadastroFuncionarios.DAO;
 using CadastroFuncionarios.Entidades;
 using CadastroFuncionarios.Enums;
+using CadastroFuncionarios.Servicos;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,7 @@ namespace CadastroFuncionarios
 
 
         private void btnNovoFuncionario_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Vai cadastrar novo funcionário");
+        {            
             AbreFormularioFuncionario(EnumTipoCrud.Inserir);
         }
 
@@ -80,19 +80,16 @@ namespace CadastroFuncionarios
             if (result == DialogResult.Yes)
             {
                 int retorno = ApagarFuncionario(funcionario);
+                
                 if (retorno > 0)
-                    MessageBox.Show($"\"{funcionario.Nome}\" apagado com sucesso");
+                    UtilService.MostraMensagemInformacao("Ok!", $"\"{funcionario.Nome}\" apagado com sucesso");
                 else if(retorno < 0)
                 {
-                    mensagem = $"Não foi possível apagar o funcionário \"{funcionario.Nome}\".";
-                    MessageBox.Show(mensagem, "Ocorreu um erro ao tentar excluir!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensagem = $"Não foi possível apagar o funcionário \"{funcionario.Nome}\".";                    
+                    UtilService.MostraMensagemErro("Ocorreu um erro ao tentar excluir!!", mensagem);
                 }
                 CarregaDados();
-            }
-            else
-            {
-                MessageBox.Show("Ahaaa!");
-            }
+            }            
         }
 
         private int ApagarFuncionario(Funcionario funcionario)

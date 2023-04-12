@@ -1,22 +1,21 @@
-﻿using CadastroFuncionarios.Enums;
+﻿using CadastroFuncionarios.DAO;
+using CadastroFuncionarios.Entidades;
+using CadastroFuncionarios.Enums;
 using DevExpress.XtraEditors;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CadastroFuncionarios
 {
-    public partial class frPrincipal : DevExpress.XtraEditors.XtraForm
+    public partial class frPrincipal : XtraForm
     {
-        public frPrincipal()
+
+        private Usuario _usuarioLogado = null;
+
+        public frPrincipal(Usuario usuario)
         {
             InitializeComponent();
+            this._usuarioLogado = usuario;
         }
 
         private void btnCrudFuncionarios_Click(object sender, EventArgs e)
@@ -34,6 +33,26 @@ namespace CadastroFuncionarios
                 frUsuario.ShowDialog(this);
             }
 
+        }
+
+        private void frPrincipal_Load(object sender, EventArgs e)
+        {
+            if (!DesignMode)
+            {
+                if(_usuarioLogado != null)
+                {
+                    FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+                    Funcionario funcionario = funcionarioDAO.ListaRegistrosComDescricoes()
+                        .FirstOrDefault(x => x.Id == _usuarioLogado.FuncionarioId);
+                    if(funcionario != null && funcionario.Id > 0)
+                    {
+                        string primeiroNome = funcionario.Nome.Substring(0, funcionario.Nome.IndexOf(" "));
+                        lblUsuarioLogado.Visible = true;
+                        lblUsuarioLogado.Text = $"Olá {primeiroNome}";
+
+                    }
+                }
+            }
         }
     }
 }

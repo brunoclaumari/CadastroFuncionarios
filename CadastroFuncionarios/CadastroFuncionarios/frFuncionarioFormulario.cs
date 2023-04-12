@@ -96,10 +96,9 @@ namespace CadastroFuncionarios
             string mensagem = $"Funcionário {funcionario.Nome} {verboOperacao} com sucesso!!";
 
             if (retorno > 0)
-            {
-                MessageBox.Show(this, mensagem, "Deu certo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                UtilService.LimparControles(this);
-                //LimparControles();
+            {                
+                UtilService.MostraMensagemInformacao("Ok", mensagem);
+                UtilService.LimparControles(this);                
             }
         }
 
@@ -144,11 +143,6 @@ namespace CadastroFuncionarios
 
             List<Setor> listaSetores = dao.ListaRegistros();
             cbSetorFuncionario.DataSource = listaSetores;
-        }
-
-        private void btnCadastraUsuario_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(this,"Abre cadastro de login","Olá",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void btnCadastrarFuncionario_Click(object sender, EventArgs e)

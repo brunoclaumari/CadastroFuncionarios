@@ -84,9 +84,9 @@ namespace CadastroFuncionarios
             this.lblFuncionariosAutorizados.Location = new System.Drawing.Point(44, 27);
             this.lblFuncionariosAutorizados.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.lblFuncionariosAutorizados.Name = "lblFuncionariosAutorizados";
-            this.lblFuncionariosAutorizados.Size = new System.Drawing.Size(188, 18);
+            this.lblFuncionariosAutorizados.Size = new System.Drawing.Size(263, 18);
             this.lblFuncionariosAutorizados.TabIndex = 13;
-            this.lblFuncionariosAutorizados.Text = "Funcionários autorizados";
+            this.lblFuncionariosAutorizados.Text = "Funcionários autorizados sem login";
             this.lblFuncionariosAutorizados.ToolTip = "Apenas Gerentes e pessoas do financeiro";
             // 
             // txtSenha
