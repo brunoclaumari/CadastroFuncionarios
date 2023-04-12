@@ -174,12 +174,7 @@ namespace CadastroFuncionarios
             permiteSalvar = permiteSalvar && VerificaCamposVazios(txtNomeFuncionario);
             permiteSalvar = permiteSalvar && VerificaCamposVazios(txtCargoFuncionario);
             permiteSalvar = permiteSalvar && VerificaCamposVazios(txtSalarioFuncionario);
-            permiteSalvar = permiteSalvar && CpfValido(txtCpf);
-            //if (string.IsNullOrEmpty(txtNomeFuncionario.Text.Trim()))
-            //{
-            //    errorProviderFuncionario.SetError(txtNomeFuncionario, "Campo Obrigatório");
-            //    permiteSalvar = false;
-            //}            
+            permiteSalvar = permiteSalvar && CpfValido(txtCpf);        
 
             return permiteSalvar;
         }
@@ -218,16 +213,6 @@ namespace CadastroFuncionarios
         private void ApagaErrorProviderEspecifico(Control control)
         {
             errorProviderFuncionario.SetError(control, string.Empty);
-        }
-
-        private void cbNivelCargoFuncionario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //txtLoginUsuarioFuncionario.Enabled = 
-        }
-
-        private void cbSetorFuncionario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void frFuncionarioFormulario_FormClosing(object sender, FormClosingEventArgs e)

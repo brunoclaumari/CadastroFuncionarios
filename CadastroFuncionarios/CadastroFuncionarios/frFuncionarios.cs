@@ -21,8 +21,6 @@ namespace CadastroFuncionarios
             InitializeComponent();
         }
 
-
-
         private void btnNovoFuncionario_Click(object sender, EventArgs e)
         {            
             AbreFormularioFuncionario(EnumTipoCrud.Inserir);
@@ -49,8 +47,7 @@ namespace CadastroFuncionarios
         private void CarregaDados()
         {
             List<Funcionario> listaFuncionario = new List<Funcionario>();
-            FuncionarioDAO funcDAO = new FuncionarioDAO();
-            //listaFuncionario = funcDAO.ListaRegistros();
+            FuncionarioDAO funcDAO = new FuncionarioDAO();            
             listaFuncionario = funcDAO.ListaRegistrosComDescricoes();
 
             gridControlFuncionarios.DataSource = listaFuncionario;

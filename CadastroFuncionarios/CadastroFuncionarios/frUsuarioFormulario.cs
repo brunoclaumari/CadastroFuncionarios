@@ -53,7 +53,7 @@ namespace CadastroFuncionarios
         private void PreencheComboFuncionariosAutorizados()
         {
             /*
-             Gerência, Financeiro
+             Gerência, Financeiro são os setores que permitem ao funcionário ter login
              */
             
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -133,8 +133,7 @@ namespace CadastroFuncionarios
 
             }
             catch (Exception e)
-            {
-                //XtraMessageBox.Show(this, "Ocorreu um erro ao tentar inserir o Usuário", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {                
                 UtilService.MostraMensagemErro("Erro!", "Ocorreu um erro ao tentar inserir o Usuário");
             }
         }

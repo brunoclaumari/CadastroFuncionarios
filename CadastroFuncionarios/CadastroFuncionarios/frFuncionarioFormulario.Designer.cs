@@ -171,8 +171,7 @@ namespace CadastroFuncionarios
             this.cbNivelCargoFuncionario.Location = new System.Drawing.Point(49, 223);
             this.cbNivelCargoFuncionario.Name = "cbNivelCargoFuncionario";
             this.cbNivelCargoFuncionario.Size = new System.Drawing.Size(277, 26);
-            this.cbNivelCargoFuncionario.TabIndex = 3;
-            this.cbNivelCargoFuncionario.SelectedIndexChanged += new System.EventHandler(this.cbNivelCargoFuncionario_SelectedIndexChanged);
+            this.cbNivelCargoFuncionario.TabIndex = 3;            
             // 
             // cbSetorFuncionario
             // 
@@ -181,8 +180,7 @@ namespace CadastroFuncionarios
             this.cbSetorFuncionario.Location = new System.Drawing.Point(49, 285);
             this.cbSetorFuncionario.Name = "cbSetorFuncionario";
             this.cbSetorFuncionario.Size = new System.Drawing.Size(277, 26);
-            this.cbSetorFuncionario.TabIndex = 4;
-            this.cbSetorFuncionario.SelectedIndexChanged += new System.EventHandler(this.cbSetorFuncionario_SelectedIndexChanged);
+            this.cbSetorFuncionario.TabIndex = 4;            
             // 
             // btnCadastrarFuncionario
             // 
